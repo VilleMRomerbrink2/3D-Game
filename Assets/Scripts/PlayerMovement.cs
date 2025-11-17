@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
-            myRigidbody.AddForce(, 100);
+            
         }
     }
 }
