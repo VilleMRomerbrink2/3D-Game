@@ -880,7 +880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71804f2f19a383d4a991a2172021bdf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
-  speed: 10
+  speed: 5
   trackingDelay: 0
   player: {fileID: 1925403385}
 --- !u!1 &1925403385
