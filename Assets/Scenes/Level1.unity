@@ -769,6 +769,7 @@ GameObject:
   - component: {fileID: 1770562704}
   - component: {fileID: 1770562703}
   - component: {fileID: 1770562707}
+  - component: {fileID: 1770562708}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -881,8 +882,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   speed: 5
-  trackingDelay: 0
+  lifeTime: 3
   player: {fileID: 1925403385}
+--- !u!65 &1770562708
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770562702}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 20, y: 10, z: 20}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1925403385
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,7 +922,7 @@ GameObject:
   - component: {fileID: 1925403391}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
