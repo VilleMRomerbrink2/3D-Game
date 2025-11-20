@@ -8,9 +8,10 @@ public class EnemyController : MonoBehaviour
     bool seesPlayer = false;
 
     [SerializeField] GameObject player;
+    [SerializeField] GameObject thisObject;
     void Start()
     {
-        
+
     }
 
     void FixedUpdate()
@@ -24,8 +25,8 @@ public class EnemyController : MonoBehaviour
         
         if(seesPlayer)
         {
-            transform.position = Vector3.MoveTowards(transform.position, playerPosition, speed * Time.deltaTime);
-            Destroy(gameObject, lifeTime);
+            thisObject.transform.position = Vector3.MoveTowards(transform.position, playerPosition, speed * Time.deltaTime);
+            Destroy(thisObject.gameObject, lifeTime);
         }
     }
 
