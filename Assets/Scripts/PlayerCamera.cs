@@ -1,17 +1,17 @@
-using Unity.Cinemachine;
 using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    CinemachineCamera cam;
+    [SerializeField] GameObject mCamera;
 
-    void Start()
+    Quaternion camRotation; 
+
+    void Update()
     {
-        cam = FindFirstObjectByType<CinemachineCamera>();
+        Quaternion camRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, mCamera.transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+
+        transform.rotation = camRotation;
     }
 
-    void FixedUpdate()
-    {
-        transform.rotation = cam.transform.rotation;
-    }
+    
 }
