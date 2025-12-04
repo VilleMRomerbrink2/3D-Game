@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Check For Ground")]
 
-    public bool touchingGrass;
+    public bool touchingGrass = false;
 
     Rigidbody rB;
     InputAction moveAction;
@@ -36,27 +36,28 @@ public class PlayerMovement : MonoBehaviour
         {
             rB.linearDamping = 0;
         }
+        SpeedControl();
     }
 
     void PlayerController()
     {
-        if (moveVector.y > 0 && touchingGrass)
+        if (moveVector.y > 0)
         {
-            rB.AddRelativeForce(0, 0, playerSpeed);
+            rB.AddRelativeForce(0, 1, playerSpeed);
         }
-        else if (moveVector.y < 0 && touchingGrass)
+        else if (moveVector.y < 0)
         {
-            rB.AddRelativeForce(0, 0, -playerSpeed);
+            rB.AddRelativeForce(0, 1, -playerSpeed);
         }
-        if (moveVector.x > 0 && touchingGrass)
+        if (moveVector.x > 0)
         {
-            rB.AddRelativeForce(playerSpeed, 0, 0);
+            rB.AddRelativeForce(playerSpeed, 1, 0);
         }
-        else if (moveVector.x < 0 && touchingGrass)
+        else if (moveVector.x < 0)
         {
-            rB.AddRelativeForce(-playerSpeed, 0, 0);
+            rB.AddRelativeForce(-playerSpeed, 1, 0);
         }
-        
+
     }
 
     private void OnCollisionEnter(Collision other)
@@ -71,6 +72,27 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
             touchingGrass = false;
+        }
+    }
+
+    void SpeedControl()
+    {
+        if (touchingGrass == false && rB.linearVelocity.x > playerSpeed)
+        {
+            rB.linearVelocity = new Vector3(playerSpeed, rB.linearVelocity.y, rB.linearVelocity.x);
+        }
+        else if (touchingGrass == false && rB.linearVelocity.x < playerSpeed - playerSpeed * 2)
+        {
+            rB.linearVelocity = new Vector3(-playerSpeed, rB.linearVelocity.y, rB.linearVelocity.x);
+        }
+
+        if (touchingGrass == false && rB.linearVelocity.z > playerSpeed)
+        {
+            rB.linearVelocity = new Vector3(rB.linearVelocity.x, rB.linearVelocity.y, playerSpeed);
+        }
+        else if (touchingGrass == false && rB.linearVelocity.z < playerSpeed - playerSpeed * 2)
+        {
+            rB.linearVelocity = new Vector3(rB.linearVelocity.x, rB.linearVelocity.y, -playerSpeed);
         }
     }
 }
