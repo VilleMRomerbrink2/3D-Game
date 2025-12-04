@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rB.linearVelocity = new Vector3(playerSpeed, rB.linearVelocity.y, rB.linearVelocity.x);
         }
-        else if (touchingGrass == false && rB.linearVelocity.x < playerSpeed - playerSpeed * 2)
+        else if (touchingGrass == false && rB.linearVelocity.x < -playerSpeed)
         {
             rB.linearVelocity = new Vector3(-playerSpeed, rB.linearVelocity.y, rB.linearVelocity.x);
         }
@@ -90,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rB.linearVelocity = new Vector3(rB.linearVelocity.x, rB.linearVelocity.y, playerSpeed);
         }
-        else if (touchingGrass == false && rB.linearVelocity.z < playerSpeed - playerSpeed * 2)
+        else if (touchingGrass == false && rB.linearVelocity.z < -playerSpeed)
         {
             rB.linearVelocity = new Vector3(rB.linearVelocity.x, rB.linearVelocity.y, -playerSpeed);
         }
