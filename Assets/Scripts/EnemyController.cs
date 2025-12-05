@@ -26,7 +26,7 @@ public class EnemyController : MonoBehaviour
         if(seesPlayer)
         {
             thisObject.transform.position = Vector3.MoveTowards(transform.position, playerPosition, speed * Time.deltaTime);
-            Destroy(thisObject.gameObject, lifeTime);
+            thisObject.transform.LookAt(playerPosition);
         }
 
         
