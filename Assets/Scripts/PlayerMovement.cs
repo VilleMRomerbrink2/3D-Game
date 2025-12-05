@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement")]
 
     [SerializeField] float playerSpeed;
+    [SerializeField] float playerSpeedWhenInAir;
 
     [Header("Check For Ground")]
 
@@ -77,22 +78,21 @@ public class PlayerMovement : MonoBehaviour
 
     void SpeedControl()
     {
-        if (touchingGrass == false && rB.linearVelocity.x > playerSpeed)
+        if (!touchingGrass && rB.linearVelocity.x > playerSpeedWhenInAir)
         {
-            rB.linearVelocity = new Vector3(playerSpeed, rB.linearVelocity.y, rB.linearVelocity.x);
+            rB.linearVelocity = new Vector3(playerSpeedWhenInAir, rB.linearVelocity.y, rB.linearVelocity.z);
         }
-        else if (touchingGrass == false && rB.linearVelocity.x < -playerSpeed)
+        else if (!touchingGrass && rB.linearVelocity.x < -playerSpeedWhenInAir)
         {
-            rB.linearVelocity = new Vector3(-playerSpeed, rB.linearVelocity.y, rB.linearVelocity.x);
+            rB.linearVelocity = new Vector3(-playerSpeedWhenInAir, rB.linearVelocity.y, rB.linearVelocity.z);
         }
-
-        if (touchingGrass == false && rB.linearVelocity.z > playerSpeed)
+        if (!touchingGrass && rB.linearVelocity.z > playerSpeedWhenInAir)
         {
-            rB.linearVelocity = new Vector3(rB.linearVelocity.x, rB.linearVelocity.y, playerSpeed);
+            rB.linearVelocity = new Vector3(rB.linearVelocity.x, rB.linearVelocity.y, playerSpeedWhenInAir);
         }
-        else if (touchingGrass == false && rB.linearVelocity.z < -playerSpeed)
+        else if (!touchingGrass && rB.linearVelocity.z < -playerSpeedWhenInAir)
         {
-            rB.linearVelocity = new Vector3(rB.linearVelocity.x, rB.linearVelocity.y, -playerSpeed);
+            rB.linearVelocity = new Vector3(rB.linearVelocity.x, rB.linearVelocity.y, -playerSpeedWhenInAir);
         }
     }
 }
