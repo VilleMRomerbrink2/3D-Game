@@ -1110,7 +1110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d74f07692bb16c64da19846511eab395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCamera
-  mCamera: {fileID: 1080029570}
+  mCamera: {fileID: 330585543}
 --- !u!54 &1925403391
 Rigidbody:
   m_ObjectHideFlags: 0
