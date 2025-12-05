@@ -28,7 +28,10 @@ public class EnemyController : MonoBehaviour
             thisObject.transform.position = Vector3.MoveTowards(transform.position, playerPosition, speed * Time.deltaTime);
             Destroy(thisObject.gameObject, lifeTime);
         }
+
+        
     }
+
 
     private void OnTriggerEnter(Collider other)
     {
