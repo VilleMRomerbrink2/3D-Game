@@ -6,8 +6,8 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement")]
 
-    [SerializeField] float playerSpeed;
-    [SerializeField] float playerSpeedWhenInAir;
+    float playerSpeed;
+    float playerSpeedWhenInAir;
 
     [Header("Check For Ground")]
 
@@ -57,6 +57,15 @@ public class PlayerMovement : MonoBehaviour
         else if (moveVector.x < 0)
         {
             rB.AddRelativeForce(-playerSpeed, 1, 0);
+        }
+
+        if (Keyboard.current.shiftKey.IsPressed())
+        {
+            playerSpeed = 60;
+        }
+        else
+        {
+            playerSpeed = 25;
         }
 
     }
