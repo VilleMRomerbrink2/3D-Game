@@ -6,13 +6,13 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement")]
 
-    float playerSpeed;
-    float playerSpeedWhenInAir;
+    [SerializeField] float playerSpeed;
+    [SerializeField] float playerSpeedWhenInAir;
 
     [Header("Check For Ground")]
 
     public bool touchingGrass = false;
-
+    public LayerMask whatIsGround;
     Rigidbody rB;
     InputAction moveAction;
 
@@ -38,25 +38,26 @@ public class PlayerMovement : MonoBehaviour
             rB.linearDamping = 0;
         }
         SpeedControl();
+        GroundCheck();
     }
 
     void PlayerController()
     {
         if (moveVector.y > 0)
         {
-            rB.AddRelativeForce(0, 1, playerSpeed);
+            rB.AddRelativeForce(0, 0, playerSpeed);
         }
         else if (moveVector.y < 0)
         {
-            rB.AddRelativeForce(0, 1, -playerSpeed);
+            rB.AddRelativeForce(0, 0, -playerSpeed);
         }
         if (moveVector.x > 0)
         {
-            rB.AddRelativeForce(playerSpeed, 1, 0);
+            rB.AddRelativeForce(playerSpeed, 0, 0);
         }
         else if (moveVector.x < 0)
         {
-            rB.AddRelativeForce(-playerSpeed, 1, 0);
+            rB.AddRelativeForce(-playerSpeed, 0, 0);
         }
 
         if (Keyboard.current.shiftKey.IsPressed())
@@ -70,20 +71,13 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision other)
+    void GroundCheck()
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        {
-            touchingGrass = true;
-        }
+
+        touchingGrass = Physics.Raycast(transform.position, Vector3.down, 1.5f, whatIsGround);
+
     }
-    private void OnCollisionExit(Collision other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
-        {
-            touchingGrass = false;
-        }
-    }
+
 
     void SpeedControl()
     {
