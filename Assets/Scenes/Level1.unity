@@ -1196,6 +1196,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1925403385}
+    - target: {fileID: 3794175759302002064, guid: 6f782c02e7b0f3c4c8d15a7a67428093, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 7586862719810059290, guid: 6f782c02e7b0f3c4c8d15a7a67428093, type: 3}
       propertyPath: m_Name
       value: Horse
@@ -1220,6 +1224,10 @@ PrefabInstance:
     - target: {fileID: 984068765373656679, guid: d3a1622a862e0dd40a083683fdacd068, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3582024709748346999, guid: d3a1622a862e0dd40a083683fdacd068, type: 3}
+      propertyPath: m_Constraints
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 4245287372777728715, guid: d3a1622a862e0dd40a083683fdacd068, type: 3}
       propertyPath: m_LocalPosition.x
